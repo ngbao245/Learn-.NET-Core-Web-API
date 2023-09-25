@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CRMCar.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace CRMCar.Data
 {

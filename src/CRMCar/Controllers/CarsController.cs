@@ -1,4 +1,5 @@
 ﻿using CRMCar.Attribute;
+using CRMCar.Entity;
 using CRMCar.Models;
 using CRMCar.Repository;
 using CRMCar.Services;

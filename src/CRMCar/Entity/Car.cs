@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CRMCar
+namespace CRMCar.Entity
 {
     [Table("Car")]
     public class Car

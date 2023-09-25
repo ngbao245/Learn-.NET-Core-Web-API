@@ -24,3 +24,5 @@
 2023-09-26T01:25:20.6554234+07:00 [INF] (Serilog.AspNetCore.RequestLoggingMiddleware) HTTP "GET" "/api/cars/get-all-cars-authorize" responded 200 in 2.3217 ms
 2023-09-26T01:25:28.9073281+07:00 [INF] (Serilog.AspNetCore.RequestLoggingMiddleware) HTTP "GET" "/api/cars/get-all-cars-authorize" responded 200 in 1.8617 ms
 2023-09-26T01:32:23.9577152+07:00 [INF] (Serilog.AspNetCore.RequestLoggingMiddleware) HTTP "POST" "/api/cars/login" responded 200 in 451.1339 ms
+2023-09-26T01:39:05.6361458+07:00 [INF] (Serilog.AspNetCore.RequestLoggingMiddleware) HTTP "POST" "/api/cars/login" responded 200 in 298.8371 ms
+2023-09-26T01:39:10.6933527+07:00 [INF] (Serilog.AspNetCore.RequestLoggingMiddleware) HTTP "GET" "/api/cars/get-all-cars-apikey" responded 401 in 4.4113 ms

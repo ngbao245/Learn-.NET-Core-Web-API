@@ -1,4 +1,5 @@
-﻿using CRMCar.Models;
+﻿using CRMCar.Entity;
+using CRMCar.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
