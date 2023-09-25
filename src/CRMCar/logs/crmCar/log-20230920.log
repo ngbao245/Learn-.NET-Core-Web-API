@@ -1,0 +1,3 @@
+2023-09-20T23:59:31.4077204+07:00 [INF] () Start add new car
+2023-09-20T23:59:38.5320408+07:00 [INF] () Start add new car
+2023-09-20T23:59:38.6392625+07:00 [INF] () {"Id":2,"Name":"string","Brand":"string","Price":2147483647.0,"ExpireDate":"2023-09-20T16:59:29.566Z","IsActive":false,"Email":"user@example.com","UserId":0,"User":{"Id":0,"Name":"string","IsActive":true}}

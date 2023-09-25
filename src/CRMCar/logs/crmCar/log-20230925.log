@@ -1,0 +1,1 @@
+2023-09-25T15:11:10.3507370+07:00 [INF] (Serilog.AspNetCore.RequestLoggingMiddleware) HTTP "POST" "/api/cars/login" responded 200 in 347.2569 ms
