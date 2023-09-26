@@ -49,11 +49,10 @@ namespace DocnetCorePractice
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     ValidateLifetime = false,
-                    ValidateIssuerSigningKey = false,
+                    ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("gj6ghgowrhg949gjgofksnk3frmkf")),
                 };
             });
-
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment env)
@@ -89,6 +88,7 @@ namespace DocnetCorePractice
         private void AddDI(IServiceCollection services)
         {
             services.AddScoped<ICarRepo, CarRepo>();
+            services.AddScoped<IUserRepo, UserRepo>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
         }
     }

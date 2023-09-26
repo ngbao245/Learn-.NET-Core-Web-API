@@ -70,8 +70,6 @@ namespace CRMCar.Services
             var credential = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
             var tokenDescription = new SecurityTokenDescriptor
             {
-                Audience = "",
-                Issuer = "",
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.Name, account.Name),
@@ -80,6 +78,8 @@ namespace CRMCar.Services
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = credential,
+                Audience = "",
+                Issuer = "",
             };
             var token = tokenHanler.CreateToken(tokenDescription);
             return tokenHanler.WriteToken(token);

@@ -164,7 +164,9 @@ namespace CRMCar.Controllers
         [Route("/api/[controller]/get-car-by-id/{id}")]
         public IActionResult GetCarById(int id)
         {
-            return Ok(cars.Where(_ => _.Id == id).SingleOrDefault());
+            //return Ok(cars.Where(_ => _.Id == id).SingleOrDefault()); //get from list
+            var car = _carRepo.getSingleCar(id);
+            return Ok(car);
         }
     }
 }

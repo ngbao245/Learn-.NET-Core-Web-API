@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using CRMCar.Entity;
 
-namespace CRMCar
+namespace CRMCar.Entity
 {
     public class RefreshTokens
     {
