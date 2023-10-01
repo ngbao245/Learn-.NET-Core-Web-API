@@ -2,7 +2,9 @@
 using CRMCar.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -32,7 +34,6 @@ namespace CRMCar.Services
             {
                 Name = "ABC",
                 Id = 1,
-
             };
 
             var token = CreateJwtToken(account);
@@ -45,6 +46,46 @@ namespace CRMCar.Services
                 RefreshToken = refreshToken.Token,
             };
             return result;
+        }
+
+        public ResponseLoginModel RefreshToken(string refreshToken)
+        {
+            //var validateToken = token
+
+            //var user = get user từ db
+            var user = new User()
+            {
+                Name = "ABC",
+                Id = 1,
+            };
+
+            var jwtToken = CreateJwtToken(user);
+            var newRefreshToken = CreateRefreshToken(user);
+            var result = new ResponseLoginModel
+            {
+                FullName = user.Name,
+                UserId = user.Id,
+                Token = jwtToken,
+                RefreshToken = newRefreshToken.Token,
+            };
+            return result;
+        }
+
+        public void Register(RequestRegisterModel model)
+        {
+            // kiểm tra acc đã exist chưa
+
+            var verifyToken = "123456"; // viết function tạo OTP (chuỗi gồm 6 số random)
+
+            // add database
+            //send email
+
+
+        }
+        public void VerifyẸmail() //otp, userId (define Request VerifyEmailModel)
+        {
+            // kiểm tra otp đã đúng chưa
+            // update database
         }
 
         private RefreshTokens CreateRefreshToken(User account)

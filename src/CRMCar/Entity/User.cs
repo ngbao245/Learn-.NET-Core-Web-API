@@ -13,8 +13,8 @@ namespace CRMCar.Entity
         public string Password { get; set; }
         public string? VerificationToken { get; set; }
         public string Email { get; set; }
-        public string? resetToken { get; set; }
-        public DateTime ResetTokenExpire { get; set; }
+        //public string? resetToken { get; set; }
+        //public DateTime ResetTokenExpire { get; set; }
         public bool? IsActive { get; set; }
         ICollection<Car> Cars { get; set; }
 
