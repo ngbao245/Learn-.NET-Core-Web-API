@@ -115,6 +115,7 @@ namespace CRMCar.Services
                 {
                     new Claim(ClaimTypes.Name, account.Name),
                     new Claim(ClaimTypes.Email, "aaaaaa"),
+                    //new Claim(ClaimTypes.Role, "Manager"),
                     new Claim("CarNumber", "1"),
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),

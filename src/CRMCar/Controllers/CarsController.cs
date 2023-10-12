@@ -54,7 +54,7 @@ namespace CRMCar.Controllers
         }
 
         [HttpGet]
-        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Authorize(AuthenticationSchemes = "Bearer", Roles = "Manager")]
         [Route("/api/[controller]/get-all-cars-authorize")]
         public IActionResult Get2()
         {

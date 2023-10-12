@@ -29,6 +29,8 @@ namespace DocnetCorePractice
                 o.SwaggerDoc("v1", new OpenApiInfo { Title = "CRMCar.API", Version = "v1" });
             });
 
+
+
             services.Configure<RouteOptions>(options =>
             {
                 options.AppendTrailingSlash = false;
@@ -39,18 +41,34 @@ namespace DocnetCorePractice
             var connectionString = _configuration.GetConnectionString("DefaultConnectStrings");
             AddDI(services);
             //add
-            services.AddSingleton<ApiKeyAuthorizationFilter>();
-            services.AddSingleton<IApiKeyValidator, ApiKeyValidator>();
+            //services.AddSingleton<ApiKeyAuthorizationFilter>();
+            //services.AddSingleton<IApiKeyValidator, ApiKeyValidator>();
 
-            services.AddAuthentication("Bearer").AddJwtBearer(_ =>
+            //BSmart
+            //services.AddAuthentication("Bearer").AddJwtBearer(_ =>
+            //{
+            //    _.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateIssuer = false,
+            //        ValidateAudience = false,
+            //        ValidateLifetime = false,
+            //        ValidateIssuerSigningKey = true,
+            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("gj6ghgowrhg949gjgofksnk3frmkf")),
+            //    };
+            //});
+
+            //key on appsettings
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
-                _.TokenValidationParameters = new TokenValidationParameters
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters()
                 {
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ValidateLifetime = false,
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("gj6ghgowrhg949gjgofksnk3frmkf")),
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = _configuration["Jwt:Audience"],
+                    ValidIssuer = _configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"])),
                 };
             });
         }
@@ -75,7 +93,9 @@ namespace DocnetCorePractice
             //app.UseMiddleware<ApiKeyAuthenExtension>();
             app.UseHttpsRedirection();
             app.UseAuthorization();
+            app.UseAuthentication();
             app.UseSerilogRequestLogging();
+
             app.MapControllers();
 
             //app.UseRouting();
@@ -89,7 +109,7 @@ namespace DocnetCorePractice
         {
             services.AddScoped<ICarRepo, CarRepo>();
             services.AddScoped<IUserRepo, UserRepo>();
-            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            //services.AddScoped<IAuthenticationService, AuthenticationService>();
         }
     }
 }

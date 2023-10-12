@@ -2,6 +2,7 @@
 using CRMCar.Models;
 using CRMCar.Repository;
 using CRMCar.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Serilog;
@@ -14,17 +15,17 @@ namespace CRMCar.Controllers
     {
         private readonly ILogger _logger;
         private readonly IUserRepo _userRepo;
-        private readonly IAuthenticationService _authenticationService;
+        //private readonly IAuthenticationService _authenticationService;
 
         public UsersController(IServiceProvider serviceProvider)
         {
             _userRepo = serviceProvider.GetRequiredService<IUserRepo>();
-            _authenticationService = serviceProvider.GetRequiredService<IAuthenticationService>();
+            //_authenticationService = serviceProvider.GetRequiredService<IAuthenticationService>();
             _logger = Log.Logger;
         }
 
         //private static List<User> users = new List<User>();
-
+        [Authorize]
         [HttpGet("/api/[controller]/get-all-users")]
         public IActionResult GetAllUser()
         {

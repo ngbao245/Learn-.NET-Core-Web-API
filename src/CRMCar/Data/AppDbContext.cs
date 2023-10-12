@@ -15,8 +15,8 @@ namespace CRMCar.Data
 
         }
 
-        DbSet<Car> Car { get; set; }
-        DbSet<User> User { get; set; }
+        public virtual DbSet<Car> Car { get; set; }
+        public virtual DbSet<User> User { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
