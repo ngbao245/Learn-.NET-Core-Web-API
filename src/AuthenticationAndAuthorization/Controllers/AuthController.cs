@@ -1,5 +1,7 @@
 ﻿using AuthPractice.Entities;
 using AuthPractice.Model;
+using AuthPractice.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -15,10 +17,25 @@ namespace AuthPractice.Controllers
     {
         public static UserModel user = new UserModel();
         private readonly IConfiguration _configuration;
+        private readonly IUserServices _userServices;
 
-        public AuthController(IConfiguration configuration)
+        public AuthController(IConfiguration configuration, IUserServices userServices)
         {
             _configuration = configuration;
+            _userServices = userServices;
+        }
+
+        [HttpGet, Authorize]
+        public ActionResult<string> GetMe()
+        {
+            var userName = _userServices.GetMyName();
+            return Ok(userName);
+
+            //var userName = User?.Identity?.Name;
+            //var userName2 = User.FindFirstValue(ClaimTypes.Name);
+            //var role = User.FindFirstValue(ClaimTypes.Role);
+            //return userName;
+            //return Ok(new { userName, userName2, role });
         }
 
         [HttpPost("register")]
