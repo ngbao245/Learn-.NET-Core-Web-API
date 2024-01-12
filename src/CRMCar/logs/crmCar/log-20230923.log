@@ -1,3 +1,0 @@
-2023-09-23T23:45:06.3987308+07:00 [INF] (Serilog.AspNetCore.RequestLoggingMiddleware) HTTP "GET" "/api/cars/get-all-cars" responded 200 in 1649.4054 ms
-2023-09-23T23:47:56.5024440+07:00 [INF] (Serilog.AspNetCore.RequestLoggingMiddleware) HTTP "GET" "/" responded 404 in 12.1146 ms
-2023-09-23T23:55:28.3905700+07:00 [INF] (Serilog.AspNetCore.RequestLoggingMiddleware) HTTP "GET" "/api/cars/get-all-cars" responded 200 in 1815.1020 ms
